@@ -1,28 +1,11 @@
 import React, { useState } from "react";
 import Synth from "./synth";
-import * as Tone from "tone";
-import { Knob, Pointer, Value, Arc } from "rc-knob";
 import Controls from "./controls";
 
-const SoundBoard = () => {
+const SoundBoard = (props) => {
 	const [synthType, setSynthType] = useState("synth");
 	const [distortion, setDistortion] = useState(false);
-	const [autoWah, setAutoWah] = useState(false);
 	const [distoLvl, setDistoLvl] = useState(0.0);
-
-	const synth = new Tone.Synth().toDestination();
-	const MetalSynth = new Tone.MetalSynth().toDestination();
-	const AMSynth = new Tone.AMSynth().toDestination();
-	const FMSynth = new Tone.FMSynth().toDestination();
-	const pluck = new Tone.PluckSynth().toDestination();
-
-	const synthSwitch = {
-		synth: synth,
-		MetalSynth: MetalSynth,
-		AMSynth: AMSynth,
-		FMSynth: FMSynth,
-		PluckSynth: pluck,
-	};
 
 	const addDistortion = () => {
 		setDistortion((current) => !current);
@@ -32,24 +15,23 @@ const SoundBoard = () => {
 		setDistoLvl(level.toFixed(2));
 	};
 
-	const addWah = () => {
-		setAutoWah((current) => !current);
-	};
-
 	const changeSynth = (e) => {
-		const prev = synthSwitch[synthType];
+		const prev = props[synthType];
+		console.log(prev);
 		setSynthType(e.target.value);
-		const current = synthSwitch[e.target.value];
+		const current = props[e.target.value];
+		console.log(current);
 
-		//canceling a note just in case
+		// canceling a note just in case
 		prev.triggerRelease();
-		//switching the type
+		// switching the type
 		prev.unsync();
-		current.sync();
+		current.toDestination();
 	};
 
 	return (
 		<div className='soundboard'>
+			{console.log("I RERENDERED")}
 			<h2>AMB synth</h2>
 
 			<select
@@ -78,19 +60,6 @@ const SoundBoard = () => {
 						data-angleOffset='220'
 						data-angleRange='280'
 					/>
-					<label>Peak</label>
-				</div>
-				<div className='knob'>
-					<input
-						id='peak'
-						type='range'
-						min='0'
-						max='100'
-						data-width='40'
-						data-height='40'
-						data-angleOffset='220'
-						data-angleRange='280'
-					/>
 					<label>Amplitude</label>
 				</div>
 
@@ -101,11 +70,12 @@ const SoundBoard = () => {
 					distoLvl={distoLvl}
 				/>
 			</div>
+
 			<Synth
-				synth={synthSwitch[synthType]}
+				synth={props[synthType]}
 				distortion={distortion}
 				distoLvl={distoLvl}
-				wah={autoWah}
+				dist={props.dist}
 			/>
 		</div>
 	);

@@ -2,31 +2,17 @@ import React, { useState } from "react";
 import * as Tone from "tone";
 import Piano from "./piano";
 
-const Synth = (props) => {
-	const synth = props.synth;
-	const dist = new Tone.Distortion(0.0).toDestination();
-	const wah = new Tone.AutoWah(50, 6, -30).toDestination();
-	let arr = [synth, dist, wah];
-	wah.Q.value = 6;
-	let prev = 0.0;
-
+const Synth = ({ synth, distortion, distoLvl, dist }) => {
+	let arr = [synth, dist];
 	//need a way to say, if distoLvl changed, disconnect and reconnect new one.
-	const distoManager = () => {
-		let connected = false;
 
-		if (props.distortion) {
-			connected = true;
-			console.log("Distortion on", connected);
-			synth.connect(dist);
-		} else if (!props.distortion && connected) {
-			synth.disconnect(dist);
-		} else if (props.distoLvl !== prev && props.distortion) {
-			console.log("changed distortion level");
-			synth.disconnect(dist);
-			dist = new Tone.Distortion(props.distoLvl).toDestination();
-			prev = props.distoLvl;
-			synth.connect(dist);
-			connected = true;
+	synth.chain(dist, Tone.Destination);
+
+	const distoManager = () => {
+		if (distortion) {
+			dist.wet.value = distoLvl;
+		} else if (!distortion) {
+			dist.wet.value = 0;
 		}
 	};
 
@@ -79,6 +65,7 @@ const Synth = (props) => {
 
 	return (
 		<div>
+			{console.log("synth rerendered")}
 			<Piano play={note} stopNote={stopNote} />
 		</div>
 	);

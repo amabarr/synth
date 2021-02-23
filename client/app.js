@@ -1,4 +1,5 @@
 import React from "react";
+import Sound from "./sound";
 import SoundBoard from "./soundboard";
 import Start from "./start";
 import { default as Synth } from "./synth";
@@ -6,7 +7,7 @@ import { default as Synth } from "./synth";
 const App = () => {
 	return (
 		<>
-			<SoundBoard />
+			<Sound />
 		</>
 	);
 };

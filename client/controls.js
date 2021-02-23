@@ -1,13 +1,13 @@
 import React from "react";
 import { Knob, Pointer, Value, Arc } from "rc-knob";
 
-const Controls = (props) => {
+const Controls = ({ distortion, addDistortion, changeDisto, distoLvl }) => {
 	return (
 		<div className='controls'>
 			<div className='distortion'>
 				<button
-					className={`lit ${props.distortion ? "pressed" : ""}`}
-					onClick={() => props.addDistortion()}
+					className={`lit ${distortion ? "pressed" : ""}`}
+					onClick={() => addDistortion()}
 				>
 					DISTORT!
 				</button>
@@ -19,8 +19,8 @@ const Controls = (props) => {
 					min={0}
 					max={1}
 					className='styledKnob'
-					defaultValue={props.distoLvl}
-					onChange={(value) => props.changeDisto(value)}
+					value={distoLvl}
+					onChange={(value) => changeDisto(value)}
 				>
 					<Arc arcWidth={4} background='grey' />
 					<circle r='20' cx='25' cy='25' />
