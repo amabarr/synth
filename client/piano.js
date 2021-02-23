@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Piano = (props) => {
 	return (
 		<div>
 			<ul
 				id='piano'
-				onMouseDown={() => props.play(event)}
+				onMouseDown={() => props.play(event.target.dataset.note)}
 				onMouseUp={() => props.stopNote()}
 			>
 				<li data-note='A3' className='key'>

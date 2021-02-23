@@ -5,9 +5,9 @@ import { default as Synth } from "./synth";
 
 const App = () => {
 	return (
-		<div>
+		<>
 			<SoundBoard />
-		</div>
+		</>
 	);
 };
 
