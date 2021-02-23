@@ -10,6 +10,10 @@ body {
 	align-items: center;
 }
 
+h2 {
+	color: white;
+}
+
 .soundboard {
 	display: flex;
 	flex-direction: column;
@@ -17,7 +21,66 @@ body {
 	justify-content: center;
 	padding: 10px;
 	background-color: red;
+	border-radius: 15px;
+	border: 1px black solid;
 }
+
+/* Controls */
+.controls {
+	background-color: black;
+	color: white;
+	padding: 5px;
+	border: 1px white solid;
+	border-radius: 15px;
+}
+
+.distortion {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	padding: 5px;
+}
+
+button {
+	border: 4px grey solid;
+}
+
+.controls button {
+	border-radius: 10px;
+	height: 40px;
+	width: 80px;
+}
+
+.controls button:active {
+	color: red;
+	border: 4px red solid;
+}
+
+.pressed {
+	color: red;
+	border: 4px red solid;
+}
+
+/* Knobs */
+.styledKnob circle {
+	fill: #000000;
+
+	border: 1px white solid;
+	transition: color 100ms ease-in-out;
+}
+.styledKnob path {
+	fill: green;
+	background: red;
+}
+
+.styledKnob:hover circle,
+.styledKnob:hover path,
+.styledKnob:focus circle,
+.styledKnob:focus path {
+	box-shadow: 10px 10px 100px green;
+	transition: color 450ms ease-in-out;
+}
+/* Keys */
 
 ul {
 	list-style: none;

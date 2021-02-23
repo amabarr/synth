@@ -4,21 +4,34 @@ import Piano from "./piano";
 
 const Synth = (props) => {
 	const synth = props.synth;
-	const dist = new Tone.Distortion(0.5).toDestination();
+	const dist = new Tone.Distortion(0.0).toDestination();
 	const wah = new Tone.AutoWah(50, 6, -30).toDestination();
 	let arr = [synth, dist, wah];
 	wah.Q.value = 6;
+	let prev = 0.0;
+
+	//need a way to say, if distoLvl changed, disconnect and reconnect new one.
+	const distoManager = () => {
+		let connected = false;
+
+		if (props.distortion) {
+			connected = true;
+			console.log("Distortion on", connected);
+			synth.connect(dist);
+		} else if (!props.distortion && connected) {
+			synth.disconnect(dist);
+		} else if (props.distoLvl !== prev && props.distortion) {
+			console.log("changed distortion level");
+			synth.disconnect(dist);
+			dist = new Tone.Distortion(props.distoLvl).toDestination();
+			prev = props.distoLvl;
+			synth.connect(dist);
+			connected = true;
+		}
+	};
 
 	const note = (note) => {
-		let pressed = false;
-
-		if (props.distortion === true) {
-			pressed = true;
-			synth.connect(dist);
-		} else if (props.distortion === false && pressed === true) {
-			synth.disconnect(dist);
-		}
-
+		distoManager();
 		synth.triggerAttack(note);
 	};
 
