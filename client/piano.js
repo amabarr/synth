@@ -1,11 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Piano = (props) => {
+	//going to have to edit with octaves
+	const onkeydown = (event) => {
+		if (event.keyCode === 83) {
+			props.play("B3");
+		}
+
+		if (event.keyCode === 68) {
+			props.play("C4");
+		}
+	};
+
+	const onkeyup = () => {
+		props.stopNote();
+	};
+
+	React.useEffect(() => {
+		window.addEventListener("keydown", onkeydown);
+		window.addEventListener("keyup", onkeyup);
+
+		return () => {
+			window.removeEventListener("keydown", onkeydown);
+		};
+	}, []);
+
 	return (
 		<div>
 			<ul
 				id='piano'
-				onMouseDown={() => props.play(event)}
+				onMouseDown={() => props.play(event.target.dataset.note)}
 				onMouseUp={() => props.stopNote()}
 			>
 				<li data-note='A3' className='key'>

@@ -5,9 +5,13 @@ import Piano from "./piano";
 const Synth = (props) => {
 	const synth = props.synth;
 	const dist = new Tone.Distortion(0.5).toDestination();
+	const wah = new Tone.AutoWah(50, 6, -30).toDestination();
 
-	const note = (e) => {
+	wah.Q.value = 6;
+
+	const note = (note) => {
 		let pressed = false;
+
 		if (props.distortion === true) {
 			pressed = true;
 			synth.connect(dist);
@@ -15,7 +19,6 @@ const Synth = (props) => {
 			synth.disconnect(dist);
 		}
 
-		let note = e.target.dataset.note;
 		synth.triggerAttack(note);
 	};
 
