@@ -11,6 +11,7 @@ const Synth = ({
 	reverb,
 	reverberate,
 	reverbLvl,
+	octaves,
 }) => {
 	let arr = [synth, dist];
 
@@ -42,25 +43,30 @@ const Synth = ({
 
 	const onkeydown = (event) => {
 		const codeToNote = {
-			65: "A",
-			87: "A#",
-			83: "B",
-			68: "C",
-			82: "C#",
-			70: "D",
-			84: "D#",
-			71: "E",
-			72: "F",
-			85: "F#",
-			74: "G",
-			73: "G#",
-			75: "A",
-			79: "A#",
-			76: "B",
+			65: `C${octaves[0]}`,
+			87: `C#${octaves[0]}`,
+			83: `D${octaves[0]}`,
+			69: `D#${octaves[0]}`,
+			68: `E${octaves[0]}`,
+			70: `F${octaves[0]}`,
+			84: `F#${octaves[0]}`,
+			71: `G${octaves[0]}`,
+			89: `G#${octaves[0]}`,
+			72: `A${octaves[0]}`,
+			85: `A#${octaves[0]}`,
+			74: `B${octaves[0]}`,
+			75: `C${octaves[1]}`,
+			79: `C#${octaves[1]}`,
+			76: `D${octaves[1]}`,
+			80: `D#${octaves[1]}`,
+			186: `E${octaves[1]}`,
+			222: `F${octaves[1]}`,
+			221: `F#${octaves[1]}`,
+			13: `G${octaves[1]}`,
 		};
 
 		if (codeToNote[event.keyCode]) {
-			note(`${codeToNote[event.keyCode]}3`);
+			note(`${codeToNote[event.keyCode]}`);
 		}
 	};
 
@@ -80,7 +86,7 @@ const Synth = ({
 
 	return (
 		<div>
-			<Piano play={note} stopNote={stopNote} />
+			<Piano play={note} stopNote={stopNote} octaves={octaves} />
 		</div>
 	);
 };

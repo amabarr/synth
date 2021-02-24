@@ -1,58 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Key from "./key";
 
-const Piano = (props) => {
+const Piano = ({ play, stopNote, octaves }) => {
 	return (
 		<div>
 			<ul
 				id='piano'
-				onMouseDown={() => props.play(event.target.dataset.note)}
-				onMouseUp={() => props.stopNote()}
+				onMouseDown={() => play(event.target.dataset.note)}
+				onMouseUp={() => stopNote()}
 			>
-				<li data-note='A3' className='key'>
-					<div data-note='A#3' className='black-key'>
-						W
-					</div>
-					A
-				</li>
-				<li data-note='B3' className='key'>
-					S
-				</li>
-				<li data-note='C4' className='key'>
-					<div data-note='C#4' className='black-key'>
-						R
-					</div>
-					D
-				</li>
-				<li data-note='D4' className='key'>
-					<div data-note='D#4' className='black-key'>
-						T
-					</div>
-					F
-				</li>
-				<li data-note='E4' className='key'>
-					G
-				</li>
-				<li data-note='F4' className='key'>
-					<div data-note='F#4' className='black-key'>
-						U
-					</div>
-					H
-				</li>
-				<li data-note='G4' className='key'>
-					<div data-note='G#4' className='black-key'>
-						I
-					</div>
-					J
-				</li>
-				<li data-note='A4' className='key'>
-					<div data-note='A#4' className='black-key'>
-						O
-					</div>
-					K
-				</li>
-				<li data-note='B4' className='key'>
-					L
-				</li>
+				<Key note='C' octave={octaves[0]} keyColor='white' keyBinding='A' />
+				<Key note='C#' octave={octaves[0]} keyColor='black' keyBinding='W' />
+				<Key note='D' octave={octaves[0]} keyColor='white' keyBinding='S' />
+				<Key note='D#' octave={octaves[0]} keyColor='black' keyBinding='E' />
+				<Key note='E' octave={octaves[0]} keyColor='white' keyBinding='D' />
+				<Key note='F' octave={octaves[0]} keyColor='white' keyBinding='F' />
+				<Key note='F#' octave={octaves[0]} keyColor='black' keyBinding='T' />
+				<Key note='G' octave={octaves[0]} keyColor='white' keyBinding='G' />
+				<Key note='G#' octave={octaves[0]} keyColor='black' keyBinding='Y' />
+				<Key note='A' octave={octaves[0]} keyColor='white' keyBinding='H' />
+				<Key note='A#' octave={octaves[0]} keyColor='black' keyBinding='U' />
+				<Key note='B' octave={octaves[0]} keyColor='white' keyBinding='J' />
+
+				<Key note='C' octave={octaves[1]} keyColor='white' keyBinding='K' />
+				<Key note='C#' octave={octaves[1]} keyColor='black' keyBinding='O' />
+				<Key note='D' octave={octaves[1]} keyColor='white' keyBinding='L' />
+				<Key note='D#' octave={octaves[1]} keyColor='black' keyBinding='P' />
+				<Key note='E' octave={octaves[1]} keyColor='white' keyBinding='' />
+				<Key note='F' octave={octaves[1]} keyColor='white' keyBinding='' />
+				<Key note='F#' octave={octaves[1]} keyColor='black' keyBinding='' />
+				<Key note='G' octave={octaves[1]} keyColor='white' keyBinding='' />
+				<Key note='G#' octave={octaves[1]} keyColor='black' keyBinding='' />
+				<Key note='A' octave={octaves[1]} keyColor='white' keyBinding='' />
+				<Key note='A#' octave={octaves[1]} keyColor='black' keyBinding='' />
+				<Key note='B' octave={octaves[1]} keyColor='white' keyBinding='' />
 			</ul>
 		</div>
 	);
