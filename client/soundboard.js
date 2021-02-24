@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Synth from "./synth";
 import Controls from "./controls";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVolumeDown, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 const SoundBoard = (props) => {
 	const [synthType, setSynthType] = useState("synth");
@@ -49,23 +51,25 @@ const SoundBoard = (props) => {
 
 	return (
 		<div className='soundboard'>
-			<h2>AMB synth</h2>
+			<div id='top'>
+				<h2>AMB synth</h2>
 
-			<select
-				name='synthType'
-				id='synths'
-				value={synthType}
-				onChange={changeSynth}
-			>
-				<option value='synth'>Synth</option>
-				<option value='AMSynth'>Amplitude Modulation</option>
-				<option value='FMSynth'>Frequency Modulation</option>
-				<option value='PluckSynth'>Pluck Synth</option>
-				<option value='MetalSynth'>MetalSynth</option>
-			</select>
-
-			<div className='controls'>
+				<select
+					name='synthType'
+					id='synths'
+					value={synthType}
+					onChange={changeSynth}
+				>
+					<option value='synth'>Synth</option>
+					<option value='AMSynth'>Amplitude Modulation</option>
+					<option value='FMSynth'>Frequency Modulation</option>
+					<option value='PluckSynth'>Pluck Synth</option>
+					<option value='MetalSynth'>MetalSynth</option>
+				</select>
+			</div>
+			<div className='controls all-controls'>
 				<div className='knob'>
+					<FontAwesomeIcon icon={faVolumeDown} />
 					<input
 						id='peak'
 						type='range'
@@ -74,7 +78,7 @@ const SoundBoard = (props) => {
 						value={vol}
 						onChange={handleVol}
 					/>
-					<label>Volume</label>
+					<FontAwesomeIcon icon={faVolumeUp} />
 				</div>
 
 				<Controls
@@ -87,6 +91,7 @@ const SoundBoard = (props) => {
 					addReverb={addReverb}
 					changeReverb={changeReverb}
 					handleOctaves={handleOctaves}
+					octaves={octaves}
 				/>
 			</div>
 

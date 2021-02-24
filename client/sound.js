@@ -1,5 +1,6 @@
 import React from "react";
 import * as Tone from "tone";
+import Footer from "./footer";
 import SoundBoard from "./soundboard";
 
 const Sound = () => {
@@ -12,15 +13,18 @@ const Sound = () => {
 	const reverb = new Tone.Reverb(2.0);
 
 	return (
-		<SoundBoard
-			dist={dist}
-			synth={synth}
-			MetalSynth={MetalSynth}
-			AMSynth={AMSynth}
-			FMSynth={FMSynth}
-			PluckSynth={pluck}
-			reverb={reverb}
-		/>
+		<>
+			<SoundBoard
+				dist={dist}
+				synth={synth}
+				MetalSynth={MetalSynth}
+				AMSynth={AMSynth}
+				FMSynth={FMSynth}
+				PluckSynth={pluck}
+				reverb={reverb}
+			/>
+			<Footer />
+		</>
 	);
 };
 

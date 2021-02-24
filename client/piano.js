@@ -26,9 +26,14 @@ const Piano = ({ play, stopNote, octaves }) => {
 				<Key note='C#' octave={octaves[1]} keyColor='black' keyBinding='O' />
 				<Key note='D' octave={octaves[1]} keyColor='white' keyBinding='L' />
 				<Key note='D#' octave={octaves[1]} keyColor='black' keyBinding='P' />
-				<Key note='E' octave={octaves[1]} keyColor='white' keyBinding='' />
-				<Key note='F' octave={octaves[1]} keyColor='white' keyBinding='' />
-				<Key note='F#' octave={octaves[1]} keyColor='black' keyBinding='' />
+				<Key note='E' octave={octaves[1]} keyColor='white' keyBinding=';' />
+				<Key note='F' octave={octaves[1]} keyColor='white' keyBinding="'" />
+				<Key
+					note='F#'
+					octave={octaves[1]}
+					keyColor='black'
+					keyBinding='enter'
+				/>
 				<Key note='G' octave={octaves[1]} keyColor='white' keyBinding='' />
 				<Key note='G#' octave={octaves[1]} keyColor='black' keyBinding='' />
 				<Key note='A' octave={octaves[1]} keyColor='white' keyBinding='' />

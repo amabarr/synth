@@ -1,27 +1,18 @@
 import React, { useState } from "react";
 import * as Tone from "tone";
+import Sound from "./sound";
+import Home from "./homepage";
 
 const Start = () => {
 	const [audio, setAudio] = useState("false");
 
 	const onStart = async () => {
-		await Tone.start;
+		await Tone.start();
 		setAudio(true);
+		console.log("Audio is ready!");
 	};
 
-	return (
-		<div className='start-page'>
-			Welcome to my Synth, press the button to start!
-			<button
-				onClick={() => {
-					onStart();
-				}}
-			>
-				{" "}
-				Start?
-			</button>
-		</div>
-	);
+	return <>{audio === true ? <Sound /> : <Home onStart={onStart} />}</>;
 };
 
 export default Start;

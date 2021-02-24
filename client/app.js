@@ -5,7 +5,7 @@ import Start from "./start";
 const App = () => {
 	return (
 		<>
-			<Sound />
+			<Start />
 		</>
 	);
 };
