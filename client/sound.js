@@ -9,6 +9,7 @@ const Sound = () => {
 	const FMSynth = new Tone.FMSynth();
 	const pluck = new Tone.PluckSynth();
 	const dist = new Tone.Distortion(1);
+	const reverb = new Tone.Reverb(2.0);
 
 	return (
 		<SoundBoard
@@ -18,6 +19,7 @@ const Sound = () => {
 			AMSynth={AMSynth}
 			FMSynth={FMSynth}
 			PluckSynth={pluck}
+			reverb={reverb}
 		/>
 	);
 };

@@ -6,21 +6,30 @@ const SoundBoard = (props) => {
 	const [synthType, setSynthType] = useState("synth");
 	const [distortion, setDistortion] = useState(false);
 	const [distoLvl, setDistoLvl] = useState(0.0);
+	const [reverb, setReverb] = useState(false);
+	const [reverbLvl, setReverbLvl] = useState(0);
+	const [vol, setVol] = useState(0);
 
 	const addDistortion = () => {
 		setDistortion((current) => !current);
+	};
+
+	const addReverb = () => {
+		setReverb((current) => !current);
 	};
 
 	const changeDisto = (level) => {
 		setDistoLvl(level.toFixed(2));
 	};
 
+	const changeReverb = (level) => {
+		setReverbLvl(level.toFixed(2));
+	};
+
 	const changeSynth = (e) => {
 		const prev = props[synthType];
-		console.log(prev);
 		setSynthType(e.target.value);
 		const current = props[e.target.value];
-		console.log(current);
 
 		// canceling a note just in case
 		prev.triggerRelease();
@@ -29,9 +38,12 @@ const SoundBoard = (props) => {
 		current.toDestination();
 	};
 
+	const handleVol = (e) => {
+		setVol(e.target.value);
+	};
+
 	return (
 		<div className='soundboard'>
-			{console.log("I RERENDERED")}
 			<h2>AMB synth</h2>
 
 			<select
@@ -53,14 +65,12 @@ const SoundBoard = (props) => {
 					<input
 						id='peak'
 						type='range'
-						min='0'
-						max='100'
-						data-width='40'
-						data-height='40'
-						data-angleOffset='220'
-						data-angleRange='280'
+						min='-40'
+						max='20'
+						value={vol}
+						onChange={handleVol}
 					/>
-					<label>Amplitude</label>
+					<label>Volume</label>
 				</div>
 
 				<Controls
@@ -68,6 +78,10 @@ const SoundBoard = (props) => {
 					distortion={distortion}
 					changeDisto={changeDisto}
 					distoLvl={distoLvl}
+					reverb={reverb}
+					reverbLvl={reverbLvl}
+					addReverb={addReverb}
+					changeReverb={changeReverb}
 				/>
 			</div>
 
@@ -76,6 +90,10 @@ const SoundBoard = (props) => {
 				distortion={distortion}
 				distoLvl={distoLvl}
 				dist={props.dist}
+				vol={vol}
+				reverb={reverb}
+				reverberate={props.reverb}
+				reverbLvl={reverbLvl}
 			/>
 		</div>
 	);

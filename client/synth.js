@@ -2,17 +2,32 @@ import React, { useState } from "react";
 import * as Tone from "tone";
 import Piano from "./piano";
 
-const Synth = ({ synth, distortion, distoLvl, dist }) => {
+const Synth = ({
+	synth,
+	distortion,
+	distoLvl,
+	dist,
+	vol,
+	reverb,
+	reverberate,
+	reverbLvl,
+}) => {
 	let arr = [synth, dist];
-	//need a way to say, if distoLvl changed, disconnect and reconnect new one.
 
-	synth.chain(dist, Tone.Destination);
+	synth.volume.value = vol;
+	synth.chain(dist, reverberate, Tone.Destination);
 
 	const distoManager = () => {
 		if (distortion) {
 			dist.wet.value = distoLvl;
 		} else if (!distortion) {
 			dist.wet.value = 0;
+		}
+
+		if (reverb) {
+			reverberate.wet.value = reverbLvl;
+		} else if (!reverb) {
+			reverberate.wet.value = 0;
 		}
 	};
 
@@ -65,7 +80,6 @@ const Synth = ({ synth, distortion, distoLvl, dist }) => {
 
 	return (
 		<div>
-			{console.log("synth rerendered")}
 			<Piano play={note} stopNote={stopNote} />
 		</div>
 	);
