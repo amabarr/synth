@@ -4,11 +4,12 @@ import Controls from "./controls";
 
 const SoundBoard = (props) => {
 	const [synthType, setSynthType] = useState("synth");
+	const [vol, setVol] = useState(0);
+	const [octaves, setOctaves] = useState([3, 4]);
 	const [distortion, setDistortion] = useState(false);
 	const [distoLvl, setDistoLvl] = useState(0.0);
 	const [reverb, setReverb] = useState(false);
 	const [reverbLvl, setReverbLvl] = useState(0);
-	const [vol, setVol] = useState(0);
 
 	const addDistortion = () => {
 		setDistortion((current) => !current);
@@ -30,16 +31,20 @@ const SoundBoard = (props) => {
 		const prev = props[synthType];
 		setSynthType(e.target.value);
 		const current = props[e.target.value];
-
-		// canceling a note just in case
 		prev.triggerRelease();
-		// switching the type
 		prev.unsync();
 		current.toDestination();
 	};
 
 	const handleVol = (e) => {
 		setVol(e.target.value);
+	};
+
+	const handleOctaves = (num) => {
+		if ((octaves[0] > 0 && num < 0) || (octaves[1] < 8 && num > 0)) {
+			const newOctaves = octaves.map((val) => val + num);
+			setOctaves(newOctaves);
+		}
 	};
 
 	return (
@@ -60,7 +65,6 @@ const SoundBoard = (props) => {
 			</select>
 
 			<div className='controls'>
-				{/* this gives me a fader of sorts */}
 				<div className='knob'>
 					<input
 						id='peak'
@@ -82,6 +86,7 @@ const SoundBoard = (props) => {
 					reverbLvl={reverbLvl}
 					addReverb={addReverb}
 					changeReverb={changeReverb}
+					handleOctaves={handleOctaves}
 				/>
 			</div>
 
@@ -94,6 +99,7 @@ const SoundBoard = (props) => {
 				reverb={reverb}
 				reverberate={props.reverb}
 				reverbLvl={reverbLvl}
+				octaves={octaves}
 			/>
 		</div>
 	);

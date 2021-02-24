@@ -10,9 +10,21 @@ const Controls = ({
 	reverbLvl,
 	addReverb,
 	changeReverb,
+	handleOctaves,
 }) => {
 	return (
 		<div className='controls'>
+			<div className='controls octaves'>
+				<button name='down' onClick={() => handleOctaves(-1)}>
+					↓ Octave ↓
+				</button>
+
+				<button name='up' onClick={() => handleOctaves(1)}>
+					{" "}
+					↑ Octave ↑
+				</button>
+			</div>
+
 			<div className='controls distortion'>
 				<button
 					name='distortion'
@@ -36,6 +48,7 @@ const Controls = ({
 					<circle r='20' cx='25' cy='25' />
 					<Pointer width={2} height={15} radius={5} type='rect' color='#fff' />
 				</Knob>
+				<label> distortion</label>
 			</div>
 
 			<div className='controls reverb'>
