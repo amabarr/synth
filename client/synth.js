@@ -13,7 +13,7 @@ const Synth = ({
 	reverbLvl,
 	octaves,
 }) => {
-	let arr = [synth, dist];
+	let arr = [synth, dist, reverberate];
 
 	synth.volume.value = vol;
 	synth.chain(dist, reverberate, Tone.Destination);
@@ -43,26 +43,30 @@ const Synth = ({
 
 	const onkeydown = (event) => {
 		const codeToNote = {
-			65: `C${octaves[0]}`,
-			87: `C#${octaves[0]}`,
-			83: `D${octaves[0]}`,
-			69: `D#${octaves[0]}`,
-			68: `E${octaves[0]}`,
-			70: `F${octaves[0]}`,
-			84: `F#${octaves[0]}`,
-			71: `G${octaves[0]}`,
-			89: `G#${octaves[0]}`,
-			72: `A${octaves[0]}`,
-			85: `A#${octaves[0]}`,
-			74: `B${octaves[0]}`,
-			75: `C${octaves[1]}`,
-			79: `C#${octaves[1]}`,
-			76: `D${octaves[1]}`,
-			80: `D#${octaves[1]}`,
-			186: `E${octaves[1]}`,
-			222: `F${octaves[1]}`,
-			221: `F#${octaves[1]}`,
-			13: `G${octaves[1]}`,
+			81: `C${octaves[0]}`,
+			50: `C#${octaves[0]}`,
+			87: `D${octaves[0]}`,
+			51: `D#${octaves[0]}`,
+			69: `E${octaves[0]}`,
+			82: `F${octaves[0]}`,
+			53: `F#${octaves[0]}`,
+			84: `G${octaves[0]}`,
+			54: `G#${octaves[0]}`,
+			89: `A${octaves[0]}`,
+			55: `A#${octaves[0]}`,
+			85: `B${octaves[0]}`,
+			73: `C${octaves[1]}`,
+			57: `C#${octaves[1]}`,
+			79: `D${octaves[1]}`,
+			48: `D#${octaves[1]}`,
+			80: `E${octaves[1]}`,
+			219: `F${octaves[1]}`,
+			187: `F#${octaves[1]}`,
+			90: `G${octaves[1]}`,
+			83: `G#${octaves[1]}`,
+			88: `A${octaves[1]}`,
+			68: `A#${octaves[1]}`,
+			67: `B${octaves[1]}`,
 		};
 
 		if (codeToNote[event.keyCode]) {

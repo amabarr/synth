@@ -16,22 +16,15 @@ const Controls = ({
 	return (
 		<div className='controls effects'>
 			<div className='controls octaves'>
-				<button
-					name='up'
-					onClick={() => handleOctaves(1)}
-					className={`lit ${octaves[0] > 3 ? "pressed" : ""}`}
-				>
-					{" "}
-					↑ Octave ↑
-				</button>
-
-				<button
-					name='down'
-					className={`lit ${octaves[0] < 3 ? "pressed" : ""}`}
-					onClick={() => handleOctaves(-1)}
-				>
-					↓ Octave ↓
-				</button>
+				<div>
+					<button name='up' onClick={() => handleOctaves(1)} className='lit'>
+						↑ Octave ↑
+					</button>
+					<button name='down' className='lit' onClick={() => handleOctaves(-1)}>
+						↓ Octave ↓
+					</button>
+				</div>
+				C {octaves[0]} - C {octaves[1]}
 			</div>
 
 			<div className='controls distortion'>

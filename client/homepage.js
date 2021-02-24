@@ -7,7 +7,6 @@ const Home = ({ onStart }) => {
 	return (
 		<div id='start-page'>
 			<h1>AMB Synth</h1>
-			{/* Place screenshot here once it's all updated */}
 			<div>
 				<FontAwesomeIcon icon={faMusic} /> Press the button to start!{" "}
 				<FontAwesomeIcon icon={faMusic} />
