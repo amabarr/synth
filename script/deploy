@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -e
+
+function cleanup_at_exit {
+  git checkout main
+
+  # remove the deploy branch
+  git branch -D deploy
+}
+trap cleanup_at_exit EXIT
+
+git checkout -b deploy
+
+# webpack will run in "production mode"
+webpack --mode production
+
+# "force" add the otherwise gitignored build files
+git add -f public/bundle.js public/bundle.js.map
+
+# create a commit, even if nothing changed
+git commit --allow-empty -m 'Deploying'
+
+# push your local "deploy" branch to the "master" branch on heroku
+git push --force heroku deploy:master
