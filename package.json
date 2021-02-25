@@ -4,11 +4,12 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"start": "node server",
 		"build": "webpack -w",
 		"start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
 		"start-dev": "npm run build & npm run start-server",
-		"start": "npm run start-dev",
-		"seed": "node seed.js"
+		"seed": "node seed.js",
+		"heroku-postbuild": "webpack --mode production"
 	},
 	"keywords": [],
 	"author": "",

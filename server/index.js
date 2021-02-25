@@ -3,7 +3,9 @@ const express = require("express");
 const morgan = require("morgan");
 const { db } = require("./db");
 
-let app = express();
+const app = express();
+
+module.exports = app;
 
 app.use(morgan("dev"));
 app.use(express.json());
@@ -21,7 +23,7 @@ app.use((err, req, res, next) => {
 	res.status(err.status || 500).send(err.message || "Internal server error.");
 });
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 const initialize = async () => {
 	await db.sync();
