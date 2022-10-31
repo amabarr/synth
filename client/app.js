@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { ErrorPage } from "./ErrorPage";
 import Sound from "./sound";
 import { Start } from "./start";
 
