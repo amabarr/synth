@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMusic } from "@fortawesome/free-solid-svg-icons";
 import Footer from "./footer";
 
-const Home = ({ onStart }) => {
+export const Home = ({ onStart }) => {
+	console.log("in the homepage");
 	return (
 		<div id='start-page'>
 			<h1>AMB Synth</h1>
@@ -12,18 +13,9 @@ const Home = ({ onStart }) => {
 				<FontAwesomeIcon icon={faMusic} />
 			</div>
 			<br />
-			<button
-				onClick={() => {
-					onStart();
-				}}
-			>
-				{" "}
-				Start!
-			</button>
+			<button onClick={onStart}> Start!</button>
 
 			<Footer />
 		</div>
 	);
 };
-
-export default Home;

@@ -1,6 +1,6 @@
 {
 	"name": "synth",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
@@ -12,7 +12,7 @@
 		"heroku-postbuild": "webpack --mode production"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "Amanda Barrafato",
 	"license": "ISC",
 	"dependencies": {
 		"@babel/runtime-corejs3": "^7.12.5",
@@ -25,12 +25,11 @@
 		"core-js": "^3.8.3",
 		"express": "^4.16.2",
 		"morgan": "^1.10.0",
-		"pg": "^8.5.1",
 		"rc-knob": "^1.0.1",
-		"react": "^17.0.1",
-		"react-dom": "^17.0.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-router-dom": "^6.4.0",
 		"regenerator-runtime": "^0.13.7",
-		"sequelize": "^6.4.0",
 		"tone": "^14.7.77"
 	},
 	"devDependencies": {
@@ -41,7 +40,7 @@
 		"babel-loader": "^8.2.2",
 		"css-loader": "^5.0.1",
 		"nodemon": "^2.0.7",
-		"webpack": "^5.16.4",
-		"webpack-cli": "^4.4.0"
+		"webpack": "^5.74",
+		"webpack-cli": "^4.10.0"
 	}
 }

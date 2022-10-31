@@ -1,25 +1,33 @@
 import React from "react";
-import * as Tone from "tone";
+import {
+	Synth,
+	MetalSynth,
+	AMSynth,
+	FMSynth,
+	PluckSynth,
+	Distortion,
+	Reverb,
+} from "tone";
 import Footer from "./footer";
 import SoundBoard from "./soundboard";
 
 const Sound = () => {
-	const synth = new Tone.Synth();
-	const MetalSynth = new Tone.MetalSynth();
-	const AMSynth = new Tone.AMSynth();
-	const FMSynth = new Tone.FMSynth();
-	const pluck = new Tone.PluckSynth();
-	const dist = new Tone.Distortion(1);
-	const reverb = new Tone.Reverb(2.0);
+	const synth = new Synth();
+	const metalSynth = new MetalSynth();
+	const amSynth = new AMSynth();
+	const fmSynth = new FMSynth();
+	const pluck = new PluckSynth();
+	const dist = new Distortion(1);
+	const reverb = new Reverb(2.0);
 
 	return (
 		<>
 			<SoundBoard
 				dist={dist}
 				synth={synth}
-				MetalSynth={MetalSynth}
-				AMSynth={AMSynth}
-				FMSynth={FMSynth}
+				MetalSynth={metalSynth}
+				AMSynth={amSynth}
+				FMSynth={fmSynth}
 				PluckSynth={pluck}
 				reverb={reverb}
 			/>

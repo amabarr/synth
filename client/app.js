@@ -1,13 +1,15 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+import { ErrorPage } from "./ErrorPage";
 import Sound from "./sound";
-import Start from "./start";
+import { Start } from "./start";
 
-const App = () => {
+export const App = () => {
 	return (
-		<>
-			<Start />
-		</>
+		<Routes>
+			<Route exact path='/' element={<Start />} />
+			<Route path='/play' element={<Sound />} />
+			<Route element={<Start />} />
+		</Routes>
 	);
 };
-
-export default App;

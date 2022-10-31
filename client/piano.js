@@ -6,7 +6,7 @@ const Piano = ({ play, stopNote, octaves }) => {
 		<div>
 			<ul
 				id='piano'
-				onMouseDown={() => play(event.target.dataset.note)}
+				onMouseDown={(e) => play(e.target.dataset.note)}
 				onMouseUp={() => stopNote()}
 			>
 				<Key note='C' octave={octaves[0]} keyColor='white' keyBinding='Q' />
