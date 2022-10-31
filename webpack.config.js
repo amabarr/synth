@@ -16,6 +16,14 @@ module.exports = {
 	watchOptions: {
 		ignored: /node_modules/,
 	},
+	experiments: {
+		futureDefaults: true,
+	},
+	devServer: {
+		historyApiFallback: {
+			index: "/",
+		},
+	},
 	module: {
 		rules: [
 			{

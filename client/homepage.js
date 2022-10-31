@@ -4,6 +4,7 @@ import { faMusic } from "@fortawesome/free-solid-svg-icons";
 import Footer from "./footer";
 
 export const Home = ({ onStart }) => {
+	console.log("in the homepage");
 	return (
 		<div id='start-page'>
 			<h1>AMB Synth</h1>
@@ -12,14 +13,7 @@ export const Home = ({ onStart }) => {
 				<FontAwesomeIcon icon={faMusic} />
 			</div>
 			<br />
-			<button
-				onClick={() => {
-					onStart();
-				}}
-			>
-				{" "}
-				Start!
-			</button>
+			<button onClick={onStart}> Start!</button>
 
 			<Footer />
 		</div>
